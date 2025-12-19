@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'preact/hooks'
-import { motion } from 'framer-motion'
 
 const ScrollProgress = () => {
     const [scrollProgress, setScrollProgress] = useState(0)
@@ -11,22 +10,21 @@ const ScrollProgress = () => {
             setScrollProgress(scrolled)
         }
 
-        window.addEventListener('scroll', updateScrollProgress)
+        // Use passive listener for better performance
+        window.addEventListener('scroll', updateScrollProgress, { passive: true })
         updateScrollProgress()
 
         return () => window.removeEventListener('scroll', updateScrollProgress)
     }, [])
 
     return (
-        <motion.div
+        <div
             className="fixed top-0 left-0 right-0 h-1 z-50 origin-left"
             style={{
                 background: 'linear-gradient(90deg, #B8860B, #D4AF37, #F4E4C1)',
-                scaleX: scrollProgress / 100,
+                transform: `scaleX(${scrollProgress / 100})`,
+                transition: 'transform 0.05s linear',
             }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: scrollProgress / 100 }}
-            transition={{ duration: 0.1 }}
         />
     )
 }

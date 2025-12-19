@@ -1,6 +1,4 @@
 import { useState, useRef } from 'preact/hooks';
-import preactLogo from './assets/preact.svg';
-import viteLogo from '/vite.svg';
 import './app.css';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -9,7 +7,6 @@ import SkillsSection from './components/SkillsSection';
 import ExperienceSection from './components/ExperienceSection';
 import ContactSection from './components/ContactSection';
 import NavBar from './components/NavBar';
-import ParticleBackground from './components/ParticleBackground';
 import CursorTrail from './components/CursorTrail';
 import ScrollProgress from './components/ScrollProgress';
 import FloatingActionButton from './components/FloatingActionButton';
@@ -34,16 +31,10 @@ export function App() {
 
   return (
     <div className='relative min-h-screen'>
-      {/* Global Background */}
       <GlobalBackground />
-
-      {/* Interactive Background Elements */}
-      <ParticleBackground />
       <CursorTrail />
       <ScrollProgress />
       <FloatingActionButton />
-
-      {/* Main Content */}
       <div className='relative z-10'>
         <NavBar scrollToSection={scrollToSection} />
         <div id="home" ref={sectionRefs.home}>

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Sparkles } from "lucide-react";
-import { ScrollAnimation } from "../utils/ScrollAnimation";
 
 const ProjectsSection = () => {
   const projects = [
@@ -63,81 +62,63 @@ const ProjectsSection = () => {
   return (
     <section className="bg-transparent text-gray-100 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="container mx-auto max-w-7xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4"
-          >
+        {/* Header - Simplified animation */}
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
             <Sparkles className="gold-text" size={40} />
-          </motion.div>
+          </div>
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             Featured <span className="shine-text">Projects</span>
           </h2>
           <p className="text-[#A0A0A0] text-lg">
             Building impactful solutions
           </p>
-        </motion.div>
+        </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - Optimized animations */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.3, delay: index * 0.05 }}
               className="group relative"
             >
-              <div className="card-elegant p-6 h-full flex flex-col relative overflow-hidden">
-                {/* Simple Gradient Background */}
+              <div className="card-elegant p-6 h-full flex flex-col relative overflow-hidden transition-transform duration-300 hover:-translate-y-2">
+                {/* Simple gradient background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
-                    <motion.div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} 
-                                  flex items-center justify-center font-bold text-black text-xl shadow-lg`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} 
+                                    flex items-center justify-center font-bold text-black text-xl shadow-lg
+                                    transition-transform duration-300 group-hover:rotate-12`}>
                       {String(project.id).padStart(2, '0')}
-                    </motion.div>
+                    </div>
 
                     {/* Links */}
                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <motion.a
+                      <a
                         href={project.githubLink}
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)]"
+                        className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)] transition-transform duration-200 hover:scale-110"
                       >
                         <Github size={18} className="gold-text" />
-                      </motion.a>
-                      <motion.a
+                      </a>
+                      <a
                         href={project.demoLink}
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)]"
+                        className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)] transition-transform duration-200 hover:scale-110"
                       >
                         <ExternalLink size={18} className="gold-text" />
-                      </motion.a>
+                      </a>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold gold-text mb-3 group-hover:text-[#FFD700] transition-colors">
+                  <h3 className="text-2xl font-bold gold-text mb-3 transition-colors duration-300 group-hover:text-[#FFD700]">
                     {project.title}
                   </h3>
 
@@ -150,38 +131,22 @@ const ProjectsSection = () => {
                   <div className="space-y-2">
                     <div className="text-xs text-[#A0A0A0] uppercase tracking-wider">Tech Stack</div>
                     <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, techIndex) => (
-                        <motion.span
+                      {project.tech.map((tech) => (
+                        <span
                           key={tech}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 + techIndex * 0.05 }}
-                          whileHover={{ scale: 1.1, y: -2 }}
                           className="px-3 py-1.5 text-sm glass-gold rounded-lg border border-[rgba(212,175,55,0.2)]
-                                     hover:border-[rgba(212,175,55,0.6)] transition-all duration-300"
+                                     hover:border-[rgba(212,175,55,0.6)] transition-all duration-200 hover:scale-105"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Bottom Accent Line */}
-                <motion.div
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`}
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
-                  style={{ originX: 0 }}
-                />
-
-                {/* Glow Effect on Hover */}
-                <motion.div
-                  className={`absolute -inset-0.5 bg-gradient-to-r ${project.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-500`}
-                />
+                {/* Bottom Accent Line - CSS only */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} 
+                                 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
               </div>
             </motion.div>
           ))}

@@ -109,7 +109,7 @@ const AboutSection = () => {
             {/* Divider */}
             <div className="gold-divider"></div>
 
-            {/* Skills Section - Infinite Scroller */}
+            {/* Skills Section - CSS-only Scroller */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -127,44 +127,31 @@ const AboutSection = () => {
                   WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
                 }}
               >
-                {/* Scrolling Content */}
-                <motion.div
-                  className="flex gap-4"
-                  animate={{
-                    x: [0, -1920]
-                  }}
-                  transition={{
-                    x: {
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      duration: 30,
-                      ease: "linear"
-                    }
-                  }}
-                >
+                {/* Scrolling Content - CSS Animation */}
+                <div className="skills-scroll flex gap-4">
                   {/* First set of skills */}
                   {skills.map((skill, index) => (
                     <div
                       key={`skill-1-${index}`}
                       className="px-6 py-3 glass-gold rounded-full text-sm font-medium text-[#E8E8E8] 
                                  border border-[rgba(212,175,55,0.2)] whitespace-nowrap flex-shrink-0
-                                 hover:border-[rgba(212,175,55,0.6)] hover:text-[#D4AF37] transition-all duration-300"
+                                 hover:border-[rgba(212,175,55,0.5)] transition-colors duration-200"
                     >
                       {skill}
                     </div>
                   ))}
-                  {/* Duplicate set for seamless loop */}
+                  {/* Second set for seamless loop */}
                   {skills.map((skill, index) => (
                     <div
                       key={`skill-2-${index}`}
                       className="px-6 py-3 glass-gold rounded-full text-sm font-medium text-[#E8E8E8] 
                                  border border-[rgba(212,175,55,0.2)] whitespace-nowrap flex-shrink-0
-                                 hover:border-[rgba(212,175,55,0.6)] hover:text-[#D4AF37] transition-all duration-300"
+                                 hover:border-[rgba(212,175,55,0.5)] transition-colors duration-200"
                     >
                       {skill}
                     </div>
                   ))}
-                </motion.div>
+                </div>
               </div>
             </motion.div>
 
