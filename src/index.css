@@ -1,5 +1,396 @@
 @import "tailwindcss";
 
-body{
-    background-color: #0F1729;
+/* ===== CSS Variables for Elegant Gold Theme ===== */
+:root {
+  /* Gold Colors */
+  --color-gold-light: #F4E4C1;
+  --color-gold: #D4AF37;
+  --color-gold-dark: #B8860B;
+  --color-rose-gold: #E6C7A3;
+  --color-champagne: #F7E7CE;
+  --color-amber: #FFBF00;
+
+  /* Background Colors */
+  --color-bg-primary: #0F0F0F;
+  --color-bg-secondary: #1A1A1A;
+  --color-bg-tertiary: #252525;
+  --color-bg-card: #1C1C1C;
+
+  /* Text Colors */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #E8E8E8;
+  --color-text-muted: #A0A0A0;
+
+  /* Shadows & Effects */
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.15);
+  --shadow-gold-strong: 0 8px 30px rgba(212, 175, 55, 0.25);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ===== Global Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #1A1A1A 0%, #0F0F0F 100%);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+  border-left: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-gold), var(--color-gold-dark));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-gold-light), var(--color-gold));
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-bg-primary);
+}
+
+::-moz-selection {
+  background: var(--color-gold);
+  color: var(--color-bg-primary);
+}
+
+/* ===== Custom Cursor ===== */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  opacity: 0.8;
+}
+
+.custom-cursor.hover {
+  transform: scale(1.8);
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: var(--color-gold-light);
+}
+
+/* ===== Keyframe Animations ===== */
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes subtle-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Utility Classes ===== */
+.gold-text {
+  color: var(--color-gold);
+}
+
+.gold-text-light {
+  color: var(--color-gold-light);
+}
+
+.rose-gold-text {
+  color: var(--color-rose-gold);
+}
+
+.shine-text {
+  background: linear-gradient(90deg,
+      var(--color-gold-dark) 0%,
+      var(--color-gold-light) 50%,
+      var(--color-gold-dark) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-subtle-glow {
+  animation: subtle-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ===== Glassmorphism ===== */
+.glass-gold {
+  background: rgba(28, 28, 28, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+/* ===== Gold Border ===== */
+.gold-border {
+  border: 1px solid var(--color-gold);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+}
+
+.gold-border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+    linear-gradient(135deg, var(--color-gold-dark), var(--color-gold-light)) border-box;
+}
+
+/* ===== Card Styles ===== */
+.card-elegant {
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.95), rgba(37, 37, 37, 0.9));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+  transition: left 0.6s;
+}
+
+.card-elegant:hover::before {
+  left: 100%;
+}
+
+.card-elegant:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-gold);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+/* ===== Button Styles ===== */
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold));
+  color: #000;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--color-gold);
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--color-gold);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.btn-outline-gold:hover::before {
+  left: 100%;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--color-gold-light);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ===== Divider ===== */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  margin: 2rem 0;
+}
+
+/* ===== Loading Animation ===== */
+.loading-spinner {
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top: 3px solid var(--color-gold);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: rotate 1s linear infinite;
+}
+
+/* ===== Accent Lines ===== */
+.accent-line-gold {
+  position: relative;
+}
+
+.accent-line-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+/* ===== Responsive Utilities ===== */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
 }

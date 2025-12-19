@@ -71,7 +71,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-[#0F1729] to-[#1A2333] text-gray-100 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-transparent text-gray-100 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <ScrollAnimation direction="up">
         <div className="container mx-auto relative z-10">
           <motion.h2
@@ -81,7 +81,7 @@ const ProjectsSection = () => {
             className="text-4xl sm:text-5xl font-bold mb-16 text-center"
           >
             My{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFA500]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#D4AF37]">
               Projects
             </span>
           </motion.h2>
@@ -89,33 +89,51 @@ const ProjectsSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={`${project.title}-${index}`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-[#1A2533] rounded-2xl overflow-hidden shadow-2xl border border-[#2C5364] group"
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-[#1C1C1C] rounded-2xl overflow-hidden shadow-2xl border border-[#D4AF37] border-opacity-30 group relative"
+                style={{
+                  transformStyle: "preserve-3d",
+                }}
               >
+                {/* Glow Effect on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"></div>
+
                 {/* Project Image */}
-                <div className="relative overflow-hidden">
-                  <img
+                <div className="relative overflow-hidden h-48">
+                  <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1C] via-transparent to-transparent opacity-60"></div>
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100">
                     <motion.a
                       href={project.githubLink}
-                      whileHover={{ scale: 1.2 }}
-                      className="bg-[#FFA500] p-3 rounded-full"
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-[#D4AF37] p-3 rounded-full shadow-lg hover:shadow-2xl"
                     >
-                      <Github size={24} className="text-[#0F1729]" />
+                      <Github size={24} className="text-[#0F0F0F]" />
                     </motion.a>
                     <motion.a
                       href={project.demoLink}
-                      whileHover={{ scale: 1.2 }}
-                      className="bg-[#DAA520] p-3 rounded-full"
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-[#B8860B] p-3 rounded-full shadow-lg hover:shadow-2xl"
                     >
-                      <ExternalLink size={24} className="text-[#0F1729]" />
+                      <ExternalLink size={24} className="text-[#0F0F0F]" />
                     </motion.a>
                   </div>
                 </div>
@@ -123,26 +141,35 @@ const ProjectsSection = () => {
                 {/* Project Details */}
                 <div className="p-6">
                   <div className="flex items-center mb-3">
-                    <project.icon className="text-[#FFA500] mr-3" size={24} />
-                    <h3 className="text-xl font-bold text-[#FFA500]">
+                    <project.icon className="text-[#D4AF37] mr-3" size={24} />
+                    <h3 className="text-xl font-bold text-[#D4AF37]">
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-300 mb-4 text-sm">
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                     {project.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <span
+                    {project.technologies.map((tech, techIndex) => (
+                      <motion.span
                         key={tech}
-                        className="px-2 py-1 bg-[#2C3E50] text-gray-200 rounded-full text-xs border border-[#DAA520]"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: techIndex * 0.05 }}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="px-3 py-1 bg-[#252525] text-gray-200 rounded-full text-xs border border-[#B8860B] 
+                                   hover:bg-[#B8860B] hover:text-[#0F0F0F] transition-all duration-300 cursor-pointer"
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
+
+                {/* Bottom Accent Line */}
+                <div className="h-1 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </motion.div>
             ))}
           </div>

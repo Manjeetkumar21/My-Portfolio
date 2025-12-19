@@ -41,14 +41,14 @@ const ExperienceSection = () => {
   ]
 
   return (
-    <section className="bg-gradient-to-br from-slate-900 to-slate-800 py-16 text-white">
+    <section className="py-16 text-white">
       <ScrollAnimation>
         <div className="container mx-auto sm:px-20 px-4">
         <h2 className="text-4xl sm:text-5xl font-bold mb-16 text-center">
-              Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFA500]">Journey</span>
+              Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#D4AF37]">Journey</span>
           </h2>
           
-          <div className="relative before:absolute before:inset-0 before:ml-5 before:w-0.5 before:bg-slate-700">
+          <div className="relative before:absolute before:inset-0 before:ml-5 before:w-0.5 before:bg-[#1C1C1C] bg-opacity-80">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.company}
@@ -59,8 +59,8 @@ const ExperienceSection = () => {
               >
                 {exp.endDate === null ? (
                   <motion.div 
-                    className="absolute sm:w-12 sm:h-12 w-10 h-10 bg-[#FFA500] rounded-full -left-0 
-                      border-4 border-slate-800 flex items-center justify-center"
+                    className="absolute sm:w-12 sm:h-12 w-10 h-10 bg-[#D4AF37] rounded-full -left-0 
+                      border-4 border-[#D4AF37] border-opacity-40 flex items-center justify-center"
                     animate={{
                       scale: [1, 1, 1],
                       boxShadow: [
@@ -78,23 +78,23 @@ const ExperienceSection = () => {
                     <Briefcase size={20} className="text-slate-900" />
                   </motion.div>
                 ) : (
-                  <div className="absolute sm:w-12 sm:h-12 h-10 w-10 bg-[#FFA500] rounded-full -left-0 
-                    border-4 border-slate-800 flex items-center justify-center">
+                  <div className="absolute sm:w-12 sm:h-12 h-10 w-10 bg-[#D4AF37] rounded-full -left-0 
+                    border-4 border-[#D4AF37] border-opacity-40 flex items-center justify-center">
                     <Briefcase size={20} className="text-slate-900" />
                   </div>
                 )}
                 
-                <div className="bg-slate-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="glass-gold rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
                   <div className="flex justify-between flex-col sm:flex-row sm:items-center items-start mb-4 gap-2">
                     <div>
-                    <h3 className="sm:text-2xl text-xl font-bold text-[#FFA500]">
+                    <h3 className="sm:text-2xl text-xl font-bold text-[#D4AF37]">
                       {exp.position}
                     </h3>
                     <p className="text-md text-slate-300 mt-1">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="text-xs sm:text-sm bg-slate-700 px-3 py-1 rounded-full">
+                    <span className="text-xs sm:text-sm bg-[#1C1C1C] bg-opacity-80 px-3 py-1 rounded-full">
                       {exp.duration}
                     </span>
                   </div>
@@ -124,7 +124,7 @@ const ExperienceSection = () => {
                     {exp.techStack.map((tech) => (
                       <span 
                         key={tech} 
-                        className="px-3 py-1 bg-slate-700 text-[#FFA500] rounded-full text-sm"
+                        className="px-3 py-1 bg-[#1C1C1C] bg-opacity-80 text-[#D4AF37] rounded-full text-sm"
                       >
                         {tech}
                       </span>

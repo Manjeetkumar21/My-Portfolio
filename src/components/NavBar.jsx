@@ -78,14 +78,14 @@ const NavBar = ({ scrollToSection }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className={`
-            ${scrolled ? 'bg-slate-800/80' : 'bg-slate-800/60'} 
+            ${scrolled ? 'glass-gold/80' : 'glass-gold/60'} 
             backdrop-blur-md rounded-full px-8 py-3 
             flex justify-between items-center shadow-lg transition-all duration-300
           `}
         >
           <motion.div 
             whileHover={{ scale: 1.1 }}
-            className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFA500]"
+            className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#D4AF37]"
           >
             Manjeet
           </motion.div>
@@ -132,7 +132,7 @@ const NavBar = ({ scrollToSection }) => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="md:hidden fixed inset-x-0 top-20 bg-slate-800/90 backdrop-blur-md 
+              className="md:hidden fixed inset-x-0 top-20 glass-gold/90 backdrop-blur-md 
                 rounded-xl shadow-lg p-4 mx-4"
             >
               <div className="space-y-4">
