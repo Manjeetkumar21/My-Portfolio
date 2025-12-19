@@ -227,7 +227,7 @@ body {
 
 /* ===== Glassmorphism ===== */
 .glass-gold {
-  background: rgba(28, 28, 28, 0.8);
+  background: rgba(28, 28, 28, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(212, 175, 55, 0.2);
@@ -250,7 +250,9 @@ body {
 
 /* ===== Card Styles ===== */
 .card-elegant {
-  background: linear-gradient(145deg, rgba(28, 28, 28, 0.95), rgba(37, 37, 37, 0.9));
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 16px;
   padding: 2rem;

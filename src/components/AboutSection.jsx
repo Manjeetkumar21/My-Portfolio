@@ -15,9 +15,11 @@ import { ScrollAnimation } from "../utils/ScrollAnimation";
 
 const AboutSection = () => {
   const skills = [
-    "React", "Node.js", "Express", "MongoDB",
+    "React", "Next.js", "Node.js", "Express", "MongoDB",
     "Python", "C++", "JavaScript", "TypeScript",
-    "HTML/CSS", "Git", "Github", "RESTful APIs"
+    "HTML/CSS", "Tailwind CSS", "Git", "GitHub", "RESTful APIs",
+    "Azure", "Azure Databricks", "GCP", "Firebase",
+    "Redux", "Preact", "Vite", "SQL", "MSSQL", "MySQL"
   ];
 
   const socialLinks = [
@@ -30,7 +32,7 @@ const AboutSection = () => {
     <section className="text-gray-100 py-20 px-4 sm:px-6 lg:px-8 bg-transparent">
 
       <ScrollAnimation direction="up">
-        <div className="container mx-auto relative z-10 max-w-5xl">
+        <div className="container mx-auto relative z-10">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +67,7 @@ const AboutSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"
             >
               <div className="text-center">
                 <motion.div
@@ -107,7 +109,7 @@ const AboutSection = () => {
             {/* Divider */}
             <div className="gold-divider"></div>
 
-            {/* Skills Section */}
+            {/* Skills Section - Infinite Scroller */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -116,26 +118,53 @@ const AboutSection = () => {
               <h3 className="text-2xl font-bold text-center mb-8">
                 <span className="gold-text">Technical</span> Arsenal
               </h3>
-              <div className="flex flex-wrap gap-3 justify-center">
-                {skills.map((skill, index) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.03 }}
-                    whileHover={{
-                      scale: 1.15,
-                      y: -5,
-                      boxShadow: "0 5px 20px rgba(212, 175, 55, 0.3)"
-                    }}
-                    className="px-5 py-2.5 glass-gold rounded-full text-sm font-medium text-[#E8E8E8] 
-                               border border-[rgba(212,175,55,0.2)] cursor-pointer
-                               hover:border-[rgba(212,175,55,0.6)] hover:text-[#D4AF37] transition-all duration-300"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+
+              {/* Infinite Scroll Container */}
+              <div
+                className="relative overflow-hidden py-4 rounded-full"
+                style={{
+                  maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+                }}
+              >
+                {/* Scrolling Content */}
+                <motion.div
+                  className="flex gap-4"
+                  animate={{
+                    x: [0, -1920]
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 30,
+                      ease: "linear"
+                    }
+                  }}
+                >
+                  {/* First set of skills */}
+                  {skills.map((skill, index) => (
+                    <div
+                      key={`skill-1-${index}`}
+                      className="px-6 py-3 glass-gold rounded-full text-sm font-medium text-[#E8E8E8] 
+                                 border border-[rgba(212,175,55,0.2)] whitespace-nowrap flex-shrink-0
+                                 hover:border-[rgba(212,175,55,0.6)] hover:text-[#D4AF37] transition-all duration-300"
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                  {/* Duplicate set for seamless loop */}
+                  {skills.map((skill, index) => (
+                    <div
+                      key={`skill-2-${index}`}
+                      className="px-6 py-3 glass-gold rounded-full text-sm font-medium text-[#E8E8E8] 
+                                 border border-[rgba(212,175,55,0.2)] whitespace-nowrap flex-shrink-0
+                                 hover:border-[rgba(212,175,55,0.6)] hover:text-[#D4AF37] transition-all duration-300"
+                    >
+                      {skill}
+                    </div>
+                  ))}
+                </motion.div>
               </div>
             </motion.div>
 

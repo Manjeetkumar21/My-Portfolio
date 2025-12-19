@@ -247,9 +247,9 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="John Doe"
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-[#1C1C1C] bg-opacity-60 rounded-xl border border-[rgba(212,175,55,0.2)] 
+                      className="w-full pl-12 pr-4 py-4 bg-[rgba(15,15,15,0.3)] backdrop-blur-md rounded-xl border border-[rgba(212,175,55,0.2)] 
                                  focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[rgba(212,175,55,0.5)] transition-all duration-300 
-                                 hover:bg-opacity-80 hover:border-[rgba(212,175,55,0.3)] text-[#E8E8E8] placeholder-[#606060]"
+                                 hover:bg-[rgba(15,15,15,0.4)] hover:border-[rgba(212,175,55,0.3)] text-[#E8E8E8] placeholder-[#606060]"
                     />
                   </div>
                 </motion.div>
@@ -273,9 +273,9 @@ const ContactSection = () => {
                       onChange={handleChange}
                       placeholder="john@example.com"
                       required
-                      className="w-full pl-12 pr-4 py-4 bg-[#1C1C1C] bg-opacity-60 rounded-xl border border-[rgba(212,175,55,0.2)] 
+                      className="w-full pl-12 pr-4 py-4 bg-[rgba(15,15,15,0.3)] backdrop-blur-md rounded-xl border border-[rgba(212,175,55,0.2)] 
                                  focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[rgba(212,175,55,0.5)] transition-all duration-300 
-                                 hover:bg-opacity-80 hover:border-[rgba(212,175,55,0.3)] text-[#E8E8E8] placeholder-[#606060]"
+                                 hover:bg-[rgba(15,15,15,0.4)] hover:border-[rgba(212,175,55,0.3)] text-[#E8E8E8] placeholder-[#606060]"
                     />
                   </div>
                 </motion.div>
@@ -299,9 +299,9 @@ const ContactSection = () => {
                       placeholder="Tell me about your project..."
                       required
                       rows={5}
-                      className="w-full pl-12 pr-4 py-4 bg-[#1C1C1C] bg-opacity-60 rounded-xl border border-[rgba(212,175,55,0.2)] 
+                      className="w-full pl-12 pr-4 py-4 bg-[rgba(15,15,15,0.3)] backdrop-blur-md rounded-xl border border-[rgba(212,175,55,0.2)] 
                                  focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[rgba(212,175,55,0.5)] transition-all duration-300 
-                                 hover:bg-opacity-80 hover:border-[rgba(212,175,55,0.3)] resize-none text-[#E8E8E8] placeholder-[#606060]"
+                                 hover:bg-[rgba(15,15,15,0.4)] hover:border-[rgba(212,175,55,0.3)] resize-none text-[#E8E8E8] placeholder-[#606060]"
                     />
                   </div>
                 </motion.div>
