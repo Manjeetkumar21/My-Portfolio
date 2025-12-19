@@ -17,31 +17,7 @@ const HeroSection = ({ scrollToSection }) => {
   }, [index])
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8">
-
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Orbs */}
-        <motion.div
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-[#D4AF37] to-[#B8860B] rounded-full opacity-10 blur-3xl"
-        />
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            x: [0, -20, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-tl from-[#F4E4C1] to-[#D4AF37] rounded-full opacity-10 blur-3xl"
-        />
-      </div>
-
+    <div className="min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto relative z-10">
         <div className="max-w-5xl mx-auto text-center">
 

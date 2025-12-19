@@ -13,6 +13,7 @@ import ParticleBackground from './components/ParticleBackground';
 import CursorTrail from './components/CursorTrail';
 import ScrollProgress from './components/ScrollProgress';
 import FloatingActionButton from './components/FloatingActionButton';
+import GlobalBackground from './components/GlobalBackground';
 
 export function App() {
   const sectionRefs = {
@@ -32,7 +33,10 @@ export function App() {
   }
 
   return (
-    <div className='relative min-h-screen bg-gradient-to-b from-[#0F0F0F] via-[#1A1A1A] to-[#0F0F0F]'>
+    <div className='relative min-h-screen'>
+      {/* Global Background */}
+      <GlobalBackground />
+
       {/* Interactive Background Elements */}
       <ParticleBackground />
       <CursorTrail />

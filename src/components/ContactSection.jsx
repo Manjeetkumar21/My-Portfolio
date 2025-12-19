@@ -94,27 +94,7 @@ const ContactSection = () => {
   ]
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 text-white relative overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#D4AF37] to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0]
-          }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tl from-[#B8860B] to-transparent rounded-full blur-3xl"
-        />
-      </div>
-
+    <section className="py-20 px-4 sm:px-6 lg:px-8 text-white">
       <ScrollAnimation>
         <div className="container mx-auto sm:px-20 px-4 relative z-10">
           {/* Header */}
