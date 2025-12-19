@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  Home, 
-  User, 
-  Briefcase, 
-  Send, 
-  Menu, 
+import {
+  Home,
+  User,
+  Briefcase,
+  Send,
+  Menu,
   X,
   Moon,
   Sun,
   Code,
-  Award 
+  Award
 } from 'lucide-react'
 
 const NavBar = ({ scrollToSection }) => {
@@ -74,7 +74,7 @@ const NavBar = ({ scrollToSection }) => {
     <nav className={`fixed z-50 w-full px-4 py-2 transition-all duration-300 
       ${scrolled ? 'top-4' : 'top-6'}`}>
       <div className="container mx-auto">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className={`
@@ -83,7 +83,7 @@ const NavBar = ({ scrollToSection }) => {
             flex justify-between items-center shadow-lg transition-all duration-300
           `}
         >
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.1 }}
             className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#D4AF37]"
           >
@@ -92,23 +92,23 @@ const NavBar = ({ scrollToSection }) => {
 
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <button 
+              <button
                 key={item.name}
                 onClick={() => handleNavClick(item.section)}
                 className={`
                   flex items-center transition-all duration-300 
-                  ${activeSection === item.section 
-                    ? 'text-amber-500 scale-105' 
-                    : 'text-slate-300 hover:text-amber-500'}
+                  ${activeSection === item.section
+                    ? 'text-[#D4AF37] scale-105'
+                    : 'text-[#E8E8E8] hover:text-[#D4AF37]'}
                 `}
               >
-                <item.icon 
+                <item.icon
                   className={`mr-2 transition-colors duration-300
-                    ${activeSection === item.section 
-                      ? 'text-amber-500' 
-                      : 'text-slate-400 group-hover:text-amber-500'}
-                  `} 
-                  size={18} 
+                    ${activeSection === item.section
+                      ? 'text-[#D4AF37]'
+                      : 'text-[#A0A0A0] group-hover:text-[#D4AF37]'}
+                  `}
+                  size={18}
                 />
                 {item.name}
               </button>
@@ -116,7 +116,7 @@ const NavBar = ({ scrollToSection }) => {
           </div>
 
           <div className="md:hidden flex items-center space-x-2">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white"
             >
@@ -137,24 +137,24 @@ const NavBar = ({ scrollToSection }) => {
             >
               <div className="space-y-4">
                 {navItems.map((item) => (
-                  <button 
+                  <button
                     key={item.name}
                     onClick={() => handleNavClick(item.section)}
                     className={`
                       w-full text-left flex items-center transition-all duration-300 
-                      ${activeSection === item.section 
-                        ? 'text-amber-500' 
-                        : 'text-slate-300 hover:text-amber-500'}
+                      ${activeSection === item.section
+                        ? 'text-[#D4AF37]'
+                        : 'text-[#E8E8E8] hover:text-[#D4AF37]'}
                       py-2
                     `}
                   >
-                    <item.icon 
+                    <item.icon
                       className={`mr-3 transition-colors duration-300
-                        ${activeSection === item.section 
-                          ? 'text-amber-500' 
-                          : 'text-slate-400 group-hover:text-amber-500'}
-                      `} 
-                      size={20} 
+                        ${activeSection === item.section
+                          ? 'text-[#D4AF37]'
+                          : 'text-[#A0A0A0] group-hover:text-[#D4AF37]'}
+                      `}
+                      size={20}
                     />
                     {item.name}
                   </button>
