@@ -2,13 +2,14 @@ import { motion } from 'framer-motion'
 
 const GlobalBackground = () => {
     return (
-        <div className="fixed inset-0 pointer-events-none z-1">
+        <div className="fixed inset-0 pointer-events-none z-1 w-full h-full min-h-screen" style={{ minHeight: '110vh' }}>
             {/* Background Image */}
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
                 style={{
                     backgroundImage: 'url(/background.webp)',
                     filter: 'brightness(0.8) contrast(1.1)',
+                    minHeight: '110vh',
                 }}
             />
 
