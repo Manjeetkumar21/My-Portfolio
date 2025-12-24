@@ -72,8 +72,8 @@ const HeroSection = ({ scrollToSection }) => {
             </button>
 
             <a
-              href="/resume.pdf"
-              download
+              href="/Resume.pdf"
+              download="Manjeet_Kumar_Resume.pdf"
               className="btn-outline-gold flex items-center gap-2 text-lg px-8 py-4"
             >
               <Download size={20} />

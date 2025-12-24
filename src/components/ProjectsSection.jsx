@@ -5,38 +5,38 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "Full-stack online store with secure payments, inventory management, and admin dashboard",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      githubLink: "#",
-      demoLink: "#",
+      title: "Multi Tenant Store Management",
+      description: "A store management system that helps companies manage multiple retail stores from one platform. It offers admin and store dashboards, real-time inventory tracking, order processing with QR payments, product management, multi-address checkout, and customizable store pages, built on Firebase with a serverless architecture for scalability",
+      tech: ["React", "Node.js", "Express", "Firebase", "Tailwind", "JWT"],
+      githubLink: "https://github.com/Manjeetkumar21/Store-Management",
+      demoLink: "https://tcplstores.in/admin",
       gradient: "from-[#D4AF37] to-[#B8860B]",
     },
     {
       id: 2,
-      title: "Airbnb Clone",
-      description: "Property rental platform with real-time booking and interactive maps",
-      tech: ["React", "Socket.io", "Express", "JWT"],
-      githubLink: "#",
-      demoLink: "#",
+      title: "QuickPaste - Instant Text Sharing Platform",
+      description: "A minimalist, real-time text sharing platform designed for developers and teams to quickly share code snippets, logs, configuration files, and documentation. Features a sleek dark-themed editor with auto-save functionality, shareable links, and real-time content statistics. Built with a modern tech stack for optimal performance and user experience.",
+      tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind"],
+      githubLink: "https://github.com/Manjeetkumar21/QuickPaste",
+      demoLink: "https://quickpaste-ten.vercel.app",
       gradient: "from-[#F4E4C1] to-[#D4AF37]",
     },
     {
       id: 3,
-      title: "Chess Multiplayer",
-      description: "Real-time chess game with ultra-low latency and player rankings",
-      tech: ["React", "Socket.io", "Redux", "WebRTC"],
-      githubLink: "#",
-      demoLink: "#",
+      title: "Realtime Chess Game",
+      description: "A real-time multiplayer chess game built with WebSocket technology for instant move synchronization. Features automatic player assignment, legal move validation, drag-and-drop gameplay, pawn promotion, live chat, move history tracking, and a responsive mobile-friendly interface with visual game state indicators.",
+      tech: ["Node.js", "Express", "Socket.io", "EJS", "Chess.js", "CSS"],
+      githubLink: "https://github.com/Manjeetkumar21/Chess-Game",
+      demoLink: "https://chess-game-hfac.onrender.com",
       gradient: "from-[#B8860B] to-[#8B6914]",
     },
     {
       id: 4,
-      title: "Task Manager Pro",
-      description: "Collaborative workspace with drag-and-drop and real-time updates",
-      tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-      githubLink: "#",
-      demoLink: "#",
+      title: "Wanderlust - Airbnb Inspired Accommodation Platform",
+      description: "A full-stack accommodation listing platform inspired by Airbnb, enabling users to browse, list, and review properties. Features secure authentication with Google OAuth integration, interactive maps powered by Mapbox, and cloud-based image management. Built with a robust MVC architecture and responsive design for seamless user experience across devices.",
+      tech: ["Node.js", "Express", "MongoDB", "EJS", "Bootstrap", "Passport.js", "Mapbox"],
+      githubLink: "https://github.com/Manjeetkumar21/Wanderlust",
+      demoLink: "https://wanderlust-tldy.onrender.com/",
       gradient: "from-[#E6C7A3] to-[#D4AF37]",
     },
     {
@@ -68,7 +68,7 @@ const ProjectsSection = () => {
             <Sparkles className="gold-text" size={40} />
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            Featured <span className="shine-text">Projects</span>
+            Personal <span className="shine-text">Projects</span>
           </h2>
           <p className="text-[#A0A0A0] text-lg">
             Building impactful solutions
@@ -96,7 +96,7 @@ const ProjectsSection = () => {
                   <div className="flex items-start justify-between mb-4">
                     <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} 
                                     flex items-center justify-center font-bold text-black text-xl shadow-lg
-                                    transition-transform duration-300 group-hover:rotate-12`}>
+                                    transition-transform duration-300`}>
                       {String(project.id).padStart(2, '0')}
                     </div>
 
@@ -104,12 +104,14 @@ const ProjectsSection = () => {
                     <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <a
                         href={project.githubLink}
+                        target="_blank"
                         className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)] transition-transform duration-200 hover:scale-110"
                       >
                         <Github size={18} className="gold-text" />
                       </a>
                       <a
                         href={project.demoLink}
+                        target="_blank"
                         className="p-2 glass-gold rounded-lg border border-[rgba(212,175,55,0.3)] transition-transform duration-200 hover:scale-110"
                       >
                         <ExternalLink size={18} className="gold-text" />
