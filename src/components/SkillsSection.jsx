@@ -262,16 +262,9 @@ const SkillsSection = () => {
             transition={{ delay: 0.5 }}
             className="mt-12 text-center"
           >
-            <p className="text-sm text-[#A0A0A0] mb-4 hidden md:block">
-              <Star className="inline gold-text" size={16} /> Hover over skills to see proficiency level
-            </p>
             <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
               {categories.map((cat) => (
                 <div key={cat.name} className="flex items-center gap-2">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: cat.color }}
-                  />
                   <cat.icon size={14} className="gold-text" />
                   <span className="text-sm text-[#E8E8E8]">{cat.name}</span>
                 </div>
