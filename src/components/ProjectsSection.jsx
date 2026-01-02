@@ -37,11 +37,11 @@ const ProjectsSection = () => {
     },
     {
       id: 5,
-      title: "Weather Dashboard",
-      description: "Real-time weather data with interactive maps and forecasts",
-      tech: ["React", "D3.js", "Weather API", "Mapbox"],
-      githubLink: "#",
-      demoLink: "#",
+      title: "Simon Says Game",
+      description: "'Simon Says' is a classic memory-testing game where players must watch and replicate an ever-increasing sequence of random color flashes and tones. Each successful round adds a new step to the sequence, progressively challenging the player's concentration and short-term memory. The game features real-time level tracking and a persistent high-score system that saves your best performance locally.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      githubLink: "https://github.com/Manjeetkumar21/Simon-Says-Game",
+      demoLink: "https://manjeetkumar21.github.io/Simon-Says-Game/",
     },
     {
       id: 6,

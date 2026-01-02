@@ -61,14 +61,14 @@ const ContactSection = () => {
       label: "Email",
       value: "21manjeetkumar21@gmail.com",
       link: "mailto:21manjeetkumar21@gmail.com",
-      color: "#B8860B"
+      color: "#D4AF37"
     },
     {
       icon: MapPin,
       label: "Location",
       value: "Lucknow, UP, India",
       link: null,
-      color: "#F4E4C1"
+      color: "#D4AF37"
     }
   ]
 
