@@ -104,15 +104,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-block mb-4"
-            >
-              <Sparkles className="gold-text" size={40} />
-            </motion.div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 section-underline">
               Let's <span className="shine-text">Connect</span>
             </h2>
             <p className="text-[#A0A0A0] text-lg max-w-2xl mx-auto">
@@ -201,8 +193,7 @@ const ContactSection = () => {
                       transition={{ delay: 0.4 + index * 0.1 }}
                       whileHover={{
                         scale: 1.2,
-                        rotate: 360,
-                        boxShadow: `0 0 30px ${color}80`
+                        rotate: 360
                       }}
                       whileTap={{ scale: 0.9 }}
                       className="p-4 glass-gold rounded-xl transition-all duration-300 group"

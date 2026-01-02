@@ -40,7 +40,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 section-underline">
               About <span className="shine-text">Me</span>
             </h2>
           </motion.div>

@@ -56,7 +56,7 @@ const SkillsSection = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 section-underline">
               My <span className="shine-text">Tech Stack</span>
             </h2>
             <p className="text-[#A0A0A0] text-lg max-w-2xl mx-auto mb-8">
@@ -70,8 +70,8 @@ const SkillsSection = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedCategory(null)}
                 className={`px-4 sm:px-6 py-2 rounded-full transition-all duration-300 text-sm sm:text-base ${selectedCategory === null
-                    ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-black'
-                    : 'glass-gold gold-border'
+                  ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-black'
+                  : 'glass-gold gold-border'
                   }`}
               >
                 All Skills
@@ -83,8 +83,8 @@ const SkillsSection = () => {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedCategory(cat.name)}
                   className={`px-4 sm:px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 text-sm sm:text-base ${selectedCategory === cat.name
-                      ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-black'
-                      : 'glass-gold gold-border'
+                    ? 'bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-black'
+                    : 'glass-gold gold-border'
                     }`}
                 >
                   <cat.icon size={16} />

@@ -10,7 +10,6 @@ const ProjectsSection = () => {
       tech: ["React", "Node.js", "Express", "Firebase", "Tailwind", "JWT"],
       githubLink: "https://github.com/Manjeetkumar21/Store-Management",
       demoLink: "https://tcplstores.in/admin",
-      gradient: "from-[#D4AF37] to-[#B8860B]",
     },
     {
       id: 2,
@@ -19,7 +18,6 @@ const ProjectsSection = () => {
       tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind"],
       githubLink: "https://github.com/Manjeetkumar21/Quick-Paste",
       demoLink: "https://quick-paste-21.web.app",
-      gradient: "from-[#F4E4C1] to-[#D4AF37]",
     },
     {
       id: 3,
@@ -28,7 +26,6 @@ const ProjectsSection = () => {
       tech: ["Node.js", "Express", "Socket.io", "EJS", "Chess.js", "CSS"],
       githubLink: "https://github.com/Manjeetkumar21/Chess-Game",
       demoLink: "https://chess-game-hfac.onrender.com",
-      gradient: "from-[#B8860B] to-[#8B6914]",
     },
     {
       id: 4,
@@ -37,7 +34,6 @@ const ProjectsSection = () => {
       tech: ["Node.js", "Express", "MongoDB", "EJS", "Bootstrap", "Passport.js", "Mapbox"],
       githubLink: "https://github.com/Manjeetkumar21/Wanderlust",
       demoLink: "https://wanderlust-tldy.onrender.com/",
-      gradient: "from-[#E6C7A3] to-[#D4AF37]",
     },
     {
       id: 5,
@@ -46,7 +42,6 @@ const ProjectsSection = () => {
       tech: ["React", "D3.js", "Weather API", "Mapbox"],
       githubLink: "#",
       demoLink: "#",
-      gradient: "from-[#D4AF37] to-[#F4E4C1]",
     },
     {
       id: 6,
@@ -55,7 +50,6 @@ const ProjectsSection = () => {
       tech: ["React Native", "Firebase", "Node.js"],
       githubLink: "#",
       demoLink: "#",
-      gradient: "from-[#B8860B] to-[#D4AF37]",
     },
   ];
 
@@ -64,10 +58,7 @@ const ProjectsSection = () => {
       <div className="container mx-auto max-w-7xl">
         {/* Header - Simplified animation */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <Sparkles className="gold-text" size={40} />
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 section-underline">
             Personal <span className="shine-text">Projects</span>
           </h2>
           <p className="text-[#A0A0A0] text-lg">
@@ -86,15 +77,12 @@ const ProjectsSection = () => {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className="group relative"
             >
-              <div className="card-elegant p-6 h-full flex flex-col relative overflow-hidden transition-transform duration-300 hover:-translate-y-2">
-                {/* Simple gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-
+              <div className="card-elegant p-6 h-full flex flex-col relative transition-transform duration-300">
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${project.gradient} 
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br from-[#F4E4C1] to-[#D4AF37] 
                                     flex items-center justify-center font-bold text-black text-xl shadow-lg
                                     transition-transform duration-300`}>
                       {String(project.id).padStart(2, '0')}
@@ -145,10 +133,6 @@ const ProjectsSection = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Bottom Accent Line - CSS only */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} 
-                                 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
               </div>
             </motion.div>
           ))}

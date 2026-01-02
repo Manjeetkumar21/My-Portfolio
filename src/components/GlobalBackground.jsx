@@ -3,20 +3,18 @@ import { motion } from 'framer-motion'
 const GlobalBackground = () => {
     return (
         <div className="fixed inset-0 pointer-events-none z-1 w-full h-full min-h-screen" style={{ minHeight: '110vh' }}>
-            {/* Background Video */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
+            {/* Background Image */}
+            <div
+                className="absolute inset-0 w-full h-full"
                 style={{
-                    filter: 'brightness(0.8) contrast(1.1)',
+                    backgroundImage: 'url(/background.webp)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    filter: 'brightness(0.6) contrast(1.1)',
                     minHeight: '110vh',
                 }}
-            >
-                <source src="/background_video.mp4" type="video/mp4" />
-            </video>
+            />
 
             {/* Dark Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0F0F0F]/10 via-[#0F0F0F]/30 to-[#0F0F0F]/10" />

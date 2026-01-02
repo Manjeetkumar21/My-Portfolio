@@ -79,14 +79,14 @@ const NavBar = ({ scrollToSection }) => {
         }}
       />
 
-      <nav className={`fixed z-50 w-full px-4 py-2 transition-all duration-300 
+      <nav className={`fixed z-50 w-full px-4 py-2 transition-all duration-300
         ${scrolled ? 'top-4' : 'top-6'}`}>
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className={`
-              ${scrolled ? 'glass-gold/80' : 'glass-gold/60'} 
+              ${scrolled ? 'glass-gold' : 'glass-gold'} 
               backdrop-blur-md rounded-2xl px-8 py-3 
               flex justify-between items-center shadow-lg transition-all duration-300
               border border-[rgba(212,175,55,0.2)]`}
