@@ -79,99 +79,130 @@ const NavBar = ({ scrollToSection }) => {
         }}
       />
 
-      <nav className={`fixed z-50 w-full px-4 py-2 transition-all duration-300
+      <nav className={`fixed z-50 w-full px-4 transition-all duration-500 flex justify-center py-2
         ${scrolled ? 'top-4' : 'top-6'}`}>
-        <div className="container mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`
-              ${scrolled ? 'glass-gold' : 'glass-gold'} 
-              backdrop-blur-md rounded-2xl px-8 py-3 
-              flex justify-between items-center shadow-lg transition-all duration-300
-              border border-[rgba(212,175,55,0.2)]`}
-          >
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#B8860B] to-[#D4AF37]"
-            >
-              Manjeet
-            </motion.div>
+        <motion.div
+          layout
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+          className={`
+            glass-gold backdrop-blur-2xl rounded-2xl px-2 py-1.5 
+            flex items-center shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500
+            border border-[rgba(212,175,55,0.25)] relative group/nav
+            w-full md:w-fit
+            ${scrolled ? 'md:scale-95' : 'scale-100'}
+          `}
+        >
+          {/* Subtle base glow reactive to hover */}
+          <div className="absolute inset-0 rounded-2xl bg-[#D4AF37]/5 opacity-0 group-hover/nav:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            <div className="hidden md:flex items-center space-x-6">
-              {navItems.map((item) => (
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-1 relative">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.section
+              return (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.section)}
                   className={`
-                    flex items-center transition-all duration-300 
-                    ${activeSection === item.section
-                      ? 'text-[#D4AF37] scale-105'
-                      : 'text-[#E8E8E8] hover:text-[#D4AF37]'}
+                    relative px-4 py-2 flex items-center gap-2 transition-all duration-300 group rounded-xl
+                    ${isActive ? 'text-black' : 'text-[#A0A0A0] hover:text-white'}
                   `}
                 >
+                  {isActive && (
+                    <motion.div
+                      layoutId="premiumActivePill"
+                      className="absolute inset-0 bg-gradient-to-r from-[#B8860B] to-[#D4AF37] rounded-xl z-0"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+
                   <item.icon
-                    className={`mr-2 transition-colors duration-300
-                      ${activeSection === item.section
-                        ? 'text-[#D4AF37]'
-                        : 'text-[#A0A0A0] group-hover:text-[#D4AF37]'}
-                    `}
-                    size={18}
+                    size={16}
+                    className={`relative z-10 transition-colors ${isActive ? 'text-black' : 'group-hover:text-[#D4AF37]'}`}
                   />
-                  {item.name}
+                  <span className="relative z-10 text-sm font-bold tracking-wide">
+                    {item.name}
+                  </span>
                 </button>
-              ))}
-            </div>
+              )
+            })}
+          </div>
 
-            <div className="md:hidden flex items-center space-x-2">
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white"
-              >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
+          {/* Mobile View: Dynamic Label + Toggle */}
+          <div className="md:hidden flex items-center px-4 py-1 gap-4 w-full justify-between">
+            <AnimatePresence mode="wait">
               <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="md:hidden fixed inset-x-0 top-20 glass-gold/90 backdrop-blur-md 
-                rounded-xl shadow-lg p-4 mx-4 border border-[rgba(212,175,55,0.3)]"
+                key={activeSection}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 10 }}
+                className="flex items-center gap-2 flex-1 justify-center"
               >
-                <div className="space-y-4">
-                  {navItems.map((item) => (
-                    <button
+                <span className="text-xs font-black gold-text uppercase tracking-[0.2em] leading-none">
+                  {navItems.find(n => n.section === activeSection)?.name}
+                </span>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="w-[1px] h-6 bg-white/10" />
+
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-white p-2 hover:bg-white/5 rounded-lg transition-colors"
+            >
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </motion.div>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Improved Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20 }}
+              className="md:hidden fixed top-24 left-4 right-4 glass-gold/95 backdrop-blur-3xl 
+                        rounded-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8)] p-6 border border-[rgba(212,175,55,0.4)]
+                        max-w-md mx-auto z-[60]"
+            >
+              <div className="grid grid-cols-2 gap-3">
+                {navItems.map((item, index) => {
+                  const isActive = activeSection === item.section
+                  return (
+                    <motion.button
                       key={item.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
                       onClick={() => handleNavClick(item.section)}
                       className={`
-                      w-full text-left flex items-center transition-all duration-300 
-                      ${activeSection === item.section
-                          ? 'text-[#D4AF37]'
-                          : 'text-[#E8E8E8] hover:text-[#D4AF37]'}
-                      py-2
-                    `}
-                    >
-                      <item.icon
-                        className={`mr-3 transition-colors duration-300
-                        ${activeSection === item.section
-                            ? 'text-[#D4AF37]'
-                            : 'text-[#A0A0A0] group-hover:text-[#D4AF37]'}
+                        flex flex-col items-center justify-center p-5 rounded-2xl transition-all duration-300 relative
+                        ${isActive
+                          ? 'bg-gradient-to-br from-[#B8860B] to-[#D4AF37] text-black shadow-xl scale-105'
+                          : 'glass-gold border-white/5 text-[#E8E8E8] hover:border-[#D4AF37]/50 active:scale-95'}
                       `}
-                        size={20}
-                      />
-                      {item.name}
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                    >
+                      <item.icon size={24} strokeWidth={isActive ? 2.5 : 1.5} />
+                      <span className="text-xs font-bold mt-2 uppercase tracking-tighter">{item.name}</span>
+
+                      {isActive && (
+                        <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-black rounded-full" />
+                      )}
+                    </motion.button>
+                  )
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </>
   )
