@@ -17,8 +17,8 @@ const ProjectsSection = () => {
       title: "QuickPaste - Instant Text Sharing Platform",
       description: "A minimalist, real-time text sharing platform designed for developers and teams to quickly share code snippets, logs, configuration files, and documentation. Features a sleek dark-themed editor with auto-save functionality, shareable links, and real-time content statistics. Built with a modern tech stack for optimal performance and user experience.",
       tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind"],
-      githubLink: "https://github.com/Manjeetkumar21/QuickPaste",
-      demoLink: "https://quickpaste-ten.vercel.app",
+      githubLink: "https://github.com/Manjeetkumar21/Quick-Paste",
+      demoLink: "https://quick-paste-21.web.app",
       gradient: "from-[#F4E4C1] to-[#D4AF37]",
     },
     {
