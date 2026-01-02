@@ -104,25 +104,19 @@ const SkillsSection = () => {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
             >
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="w-32 h-32 rounded-full glass-gold flex items-center justify-center relative"
                 style={{
                   boxShadow: '0 0 60px rgba(212, 175, 55, 0.4)'
                 }}
               >
-                <Sparkles className="gold-text" size={48} />
+                <span className="text-2xl font-bold gold-text shine-text">Skills</span>
 
                 {/* Orbiting rings */}
-                <motion.div
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                <div
                   className="absolute inset-0 border-2 border-[#D4AF37] border-opacity-20 rounded-full"
                   style={{ width: '150%', height: '150%', top: '-25%', left: '-25%' }}
                 />
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                <div
                   className="absolute inset-0 border-2 border-[#B8860B] border-opacity-10 rounded-full"
                   style={{ width: '200%', height: '200%', top: '-50%', left: '-50%' }}
                 />
@@ -236,20 +230,8 @@ const SkillsSection = () => {
                 transition={{ delay: index * 0.05 }}
                 className="card-elegant p-4 text-center"
               >
-                <div className="text-sm font-bold gold-text mb-2">{skill.name}</div>
-                <div className="relative h-2 bg-[#252525] rounded-full overflow-hidden mb-2">
-                  <motion.div
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    style={{
-                      background: `linear-gradient(90deg, ${categories.find(c => c.name === skill.category)?.color}, #D4AF37)`,
-                    }}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  />
-                </div>
-                <div className="text-xs text-[#A0A0A0]">{skill.level}%</div>
+                <div className="text-base font-bold gold-text">{skill.name}</div>
+                <div className="text-xs text-[#A0A0A0] mt-1 opacity-60">{skill.category}</div>
               </motion.div>
             ))}
           </div>

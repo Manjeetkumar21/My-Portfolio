@@ -89,7 +89,7 @@ const ProjectsSection = () => {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex gap-2 transition-opacity duration-300">
                       <a
                         href={project.githubLink}
                         target="_blank"
